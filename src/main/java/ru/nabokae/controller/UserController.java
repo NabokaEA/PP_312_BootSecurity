@@ -36,7 +36,7 @@ public class UserController {
     public String NewUserForm(Model model) {
         logger.info("Запрошена страница создания нового пользователя");
         model.addAttribute("user", new User());
-        return "user_";
+        return "user";
     }
 
     @PostMapping("/all")
@@ -50,7 +50,7 @@ public class UserController {
     public String EditUserForm(@PathVariable("id") Long id, Model model) {
         logger.info("Запрошена страница редактирования пользователя");
         model.addAttribute("user", userService.findById(id));
-        return "user_";
+        return "user";
     }
 
     @GetMapping("/{id}/delete")
