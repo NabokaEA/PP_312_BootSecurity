@@ -1,17 +1,20 @@
 package ru.nabokae.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(nullable = false)
+    @NotEmpty
     String role;
-
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
 
     public Role(Long id, String role) {
