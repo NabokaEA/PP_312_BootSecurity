@@ -14,7 +14,9 @@
 </head>
 
 <body>
-
+<h5>
+  <p th:text="${principalclass}"></p>
+</h5>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">CRUD Application</a>
 
@@ -51,6 +53,7 @@
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
+          <th scope="col">Password</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -61,6 +64,7 @@
         <tr th:each="user : ${usersAll}">
           <th scope="row" th:text="${user.id}" >1</th>
           <td th:text="${user.name}">Alex</td>
+          <td th:text="${user.password}">VeryStrongPass</td>
           <td>
             <a class="btn btn-success" th:href="@{/users/{id}(id=${user.id})}"><i class="fas fa-edit"></i></a>
             <a class="btn btn-danger" th:href="@{/users/{id}/delete(id=${user.id})}"><i class="far fa-trash-alt"></i></a>
