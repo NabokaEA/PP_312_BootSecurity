@@ -7,6 +7,7 @@ import ru.nabokae.DAO.UserRepository;
 import ru.nabokae.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,18 +26,23 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public User findById(Long id) {
-        return repo.findById(id).get();
+    public Optional<User> findById(Long id) {
+        return repo.findById(id);
     }
 
     @Transactional(readOnly = true)
     @Override
     public Iterable<User> findAll() {
-        return (List<User>) repo.findAll();
+        return repo.findAll();
     }
     @Transactional
     @Override
     public void delete(Long id) {
         repo.deleteById(id);
+    }
+
+    @Override
+    public Optional<User> findByName(String name) {
+        return repo.findByName(name);
     }
 }
